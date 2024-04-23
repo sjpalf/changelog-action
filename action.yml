@@ -1,4 +1,4 @@
-name: 'Changelog from Conventional Commits'
+name: 'SJPALF Changelog from Conventional Commits'
 description: 'Generate and update the CHANGELOG from conventional commits since latest tag or from a given tag range'
 author: Nicolas Giard
 inputs:
