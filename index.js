@@ -382,11 +382,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   // UPDATE CHANGELOG CONTENTS
 
-  // remove trailing newline character if it exists
-  if (chglog.endsWith('\n')) {
-    chglog = chglog.slice(0, -1);
-  }
-
   const lines = chglog.replace(/\r/g, '').split('\n')
   let firstVersionLine = _.findIndex(lines, l => l.startsWith('## '))
 
@@ -406,7 +401,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   if (firstVersionLine < lines.length) {
     output += '\n' + lines.slice(firstVersionLine).join('\n')
   }
-  output += `\n[${latestTag.name}]: ${githubServerUrl}/${owner}/${repo}/compare/${previousTag.name}...${latestTag.name}\n`
+
+  // add newline character at end of output if it doesn't already exists
+  if (!output.endsWith('\n')) {
+    output += '\n'
+  }
+  output += `[${latestTag.name}]: ${githubServerUrl}/${owner}/${repo}/compare/${previousTag.name}...${latestTag.name}\n`
 
   // WRITE CHANGELOG TO FILE
 
