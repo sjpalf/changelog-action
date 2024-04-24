@@ -382,6 +382,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   // UPDATE CHANGELOG CONTENTS
 
+  // remove trailing newline character if it exists
+  if (chglog.endsWith('\n')) {
+    chglog = chglog.slice(0, -1);
+  }
+
   const lines = chglog.replace(/\r/g, '').split('\n')
   let firstVersionLine = _.findIndex(lines, l => l.startsWith('## '))
 
